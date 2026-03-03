@@ -4,15 +4,17 @@ import { useState, useEffect, Suspense } from "react";
 // LOGICA: Mantendo o caminho que você confirmou
 import PropertyCard from "../../components/sections/ui/PropertyCard";
 
+// INTERFACE CORRIGIDA: id como string e mainImage para bater com os dados
 interface Property {
-  id: number;
+  id: string; 
   title: string;
   price: string;
+  location: string; 
   description: string;
   beds: number;
   baths: number;
   sqft: string;
-  image: string;
+  mainImage: string;
 }
 
 function SearchResults() {
@@ -25,10 +27,11 @@ function SearchResults() {
         const res = await fetch("/api/properties");
         const data = await res.json();
         setProperties(data);
+        
         // MILIMÉTRICO: Pequeno fôlego para garantir que a cortina já ganhou velocidade
         setTimeout(() => setIsReady(true), 100);
       } catch (e) {
-        console.error(e);
+        console.error("Erro ao buscar propriedades:", e);
       }
     };
     fetchData();
@@ -39,6 +42,7 @@ function SearchResults() {
       isReady ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
     }`}>
       {properties.map((item, i) => (
+        // Se o tipo for igual ao que o Card espera, ele renderiza sem erro
         <PropertyCard key={item.id} property={item} index={i} />
       ))}
     </div>
@@ -50,12 +54,12 @@ export default function SearchPage() {
   const [shouldRenderList, setShouldRenderList] = useState(false);
 
   useEffect(() => {
-   
+    // Inicia a animação da cortina
     const frame = requestAnimationFrame(() => {
       setIsVisible(true);
     });
 
-   
+    // Delay para renderizar a lista após a cortina começar a subir
     const timer = setTimeout(() => {
       setShouldRenderList(true);
     }, 100);
@@ -69,17 +73,17 @@ export default function SearchPage() {
   return (
     <main className="relative min-h-screen bg-white overflow-x-hidden">
       
+      {/* CORTINA DE TRANSIÇÃO (Preta) */}
       <div 
         style={{ 
           transform: isVisible ? 'translate3d(0, -100%, 0)' : 'translate3d(0, 0, 0)',
           willChange: 'transform',
           backfaceVisibility: 'hidden'
         }}
-        
         className="fixed inset-0 z-[999] bg-[#1C1C1C] transition-transform duration-[500ms] ease-[cubic-bezier(0.23,1,0.32,1)] pointer-events-none"
       />
 
-      
+      {/* CONTEÚDO PRINCIPAL */}
       <div className={`pt-32 pb-20 px-6 md:px-16 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
         <div className="flex justify-between items-end mb-12">
           <div>
@@ -88,6 +92,7 @@ export default function SearchPage() {
             </h1>
             <p className="text-gray-500 mt-4 text-xl font-medium">Imóveis selecionados para você</p>
           </div>
+          
           <button 
             onClick={() => window.history.back()} 
             className="px-8 py-4 border-2 border-gray-100 rounded-full font-bold uppercase text-sm tracking-widest hover:bg-black hover:text-white transition-all active:scale-95"
@@ -96,7 +101,6 @@ export default function SearchPage() {
           </button>
         </div>
 
-        
         {shouldRenderList && (
           <Suspense fallback={<div className="h-96 animate-pulse bg-gray-50 rounded-3xl" />}>
             <SearchResults />
