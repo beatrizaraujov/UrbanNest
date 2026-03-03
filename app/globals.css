@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  --x: 50%;
+  --y: 50%;
+}
+
+.reveal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: white;
+  z-index: 999999;
+  pointer-events: none;
+  opacity: 0;
+  /* Começa pequeno */
+  clip-path: circle(0% at var(--x) var(--y));
+  /* MILIMÉTRICO: Transição suave de clip-path e opacidade juntas */
+  transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease;
+}
+
+/* Quando clicamos, apenas mudamos os valores, e o transition faz o resto */
+.is-animating .reveal-overlay {
+  opacity: 1;
+  clip-path: circle(150% at var(--x) var(--y));
+}
