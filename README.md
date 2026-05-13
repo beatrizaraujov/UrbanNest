@@ -1,7 +1,7 @@
 # UrbanNest — Plataforma Imobiliária de Alta Performance
 
 > **Status:** Concluído.
-> 🚀 **Deploy:** [https://urbannest-imoveis.vercel.app/](https://urbannest-imoveis.vercel.app/)
+> 🚀 **Deploy:** [https://urbannest-imoveis.vercel.app/](https://urban-nestt.vercel.app/)
 
 O **UrbanNest** é uma plataforma imobiliária desenvolvida para simular um ambiente real de mercado. O foco central do projeto foi a construção de uma interface resiliente ao consumo de dados externos, priorizando a performance do Next.js e uma experiência de usuário (UX) sem fricções.
 
