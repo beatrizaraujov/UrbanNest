@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UrbanNest — Plataforma Imobiliária de Alta Performance
 
-## Getting Started
+> **Status:** Concluído.
+> 🚀 **Deploy:** [https://urbannest-imoveis.vercel.app/](https://urbannest-imoveis.vercel.app/)
 
-First, run the development server:
+O **UrbanNest** é uma plataforma imobiliária desenvolvida para simular um ambiente real de mercado. O foco central do projeto foi a construção de uma interface resiliente ao consumo de dados externos, priorizando a performance do Next.js e uma experiência de usuário (UX) sem fricções.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🏗️ Engenharia de Front-end
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Neste projeto, foquei em resolver problemas comuns de aplicações que dependem de APIs externas:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. Consumo de Dados e Resiliência
+Implementei uma estratégia de consumo de API (Mock) para validar:
+- **Fluxo Assíncrono:** Tratamento completo de requisições.
+- **Estados de Feedback:** `if (isLoading)` >>> O sistema exibe esqueletos de carregamento (Skeletons) para manter a percepção de performance do usuário.
+- **Tratamento de Erros:** `if (error)` >>> Interface amigável para falhas na busca de dados, evitando o "quebramento" da aplicação.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. Arquitetura de Componentes e Escalabilidade
+Seguindo as melhores práticas de Clean Code:
+- **Componentização Modular:** Interfaces divididas em unidades menores e reutilizáveis, facilitando a manutenção e testes.
+- **Tailwind CSS + Responsividade:** Estratégia Mobile-first absoluta, garantindo fluidez em dispositivos móveis, tablets e desktops.
 
-## Learn More
+## 🛠️ Stack Técnica
+- **Next.js:** Framework principal para otimização de rotas e SEO.
+- **React:** Biblioteca base para a construção da interface declarativa.
+- **Tailwind CSS:** Para um design sistêmico e consistente.
+- **TypeScript:** Tipagem estrita de dados imobiliários para maior segurança no desenvolvimento.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 💡 O que este projeto demonstra?
+- Minha capacidade de integrar interfaces com camadas de dados complexas.
+- Domínio de **Product Thinking**, entendendo que uma plataforma imobiliária precisa de carregamento rápido e confiança visual.
+- Maturidade em **Engenharia de Software**, com código organizado para receber um backend real com o mínimo de refatoração.****
